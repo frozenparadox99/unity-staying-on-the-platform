@@ -57,22 +57,22 @@ public class Brain : MonoBehaviour
         timeAlive = PopulationManager.elapsed;
 
         //read DNA
-        float h = 0;
-        float v = 0;
+        float turn = 0; //turn 90 or -90 degress
+        float move = 0; //move along the z axis
         if (seeGround)
         {
             // make v relative to character and always move forward
-            if (dna.GetGene(0) == 0) v = 1;
-            else if (dna.GetGene(0) == 1) h = -90;
-            else if (dna.GetGene(0) == 2) h = 90;
+            if (dna.GetGene(0) == 0) move = 1;
+            else if (dna.GetGene(0) == 1) turn = -90;
+            else if (dna.GetGene(0) == 2) turn = 90;
         }
         else
         {
-            if (dna.GetGene(1) == 0) v = 1;
-            else if (dna.GetGene(1) == 1) h = -90;
-            else if (dna.GetGene(1) == 2) h = 90;
+            if (dna.GetGene(1) == 0) move = 1;
+            else if (dna.GetGene(1) == 1) turn = -90;
+            else if (dna.GetGene(1) == 2) turn = 90;
         }
-        this.transform.Translate(0, 0, v * 0.1f);
-        this.transform.Rotate(0, h, 0);
+        this.transform.Translate(0, 0, move * 0.1f);
+        this.transform.Rotate(0, turn, 0);
     }
 }
